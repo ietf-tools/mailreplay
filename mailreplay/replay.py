@@ -45,7 +45,7 @@ def send_mail_from_file(server, file, options):
     sender = email.utils.parseaddr(from_field)[1]
     # get recipient
     info = {}
-    for received in m.get_all('Received'):
+    for received in m.get_all('Received', []):
         if not ';' in received:
             continue
         datestring = received.split(';', 1)[1]
