@@ -7,7 +7,7 @@ mailreplay (0.2.0) ietf; urgency=medium
   * Improved handling of the case when there's no Received headers in the
     replay message.
 
- -- Henrik Levkowetz <henrik@levkowetz.com>  28 Feb 2018 13:44:31 -0800
+ -- Henrik Levkowetz <henrik@levkowetz.com>  28 Feb 2018 13:45:05 -0800
 
 
 mailreplay (0.10) ietf; urgency=medium
