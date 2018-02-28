@@ -133,7 +133,7 @@ def run():
 
     group = parser.add_argument_group(argparse.SUPPRESS)
 
-    group.add_argument('EMAILS', nargs='*',                             help="Files with captured emails to be replayed")
+    group.add_argument('EMAIL', nargs='*',                              help="Files with captured emails to be replayed")
     group.add_argument('-d', '--debug', action='store_true',            help="turn on debugging")
     group.add_argument('-D', '--date', default=None,                    help="Use the given date string instead of the original")
     group.add_argument('-h', '--help', action='help',                   help="show this help message and exit")
@@ -170,7 +170,7 @@ def run():
     server = smtplib.SMTP('localhost', **kwargs)
     server.set_debuglevel(1 if options.debug else 0)
 
-    for file in options.EMAILS:
+    for file in options.EMAIL:
         try:
             if options.debug:
                 debug.show('file')
