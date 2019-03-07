@@ -138,9 +138,10 @@ def run():
     group.add_argument('-D', '--date', default=None,                    help="Use the given date string instead of the original")
     group.add_argument('-h', '--help', action='help',                   help="show this help message and exit")
     group.add_argument('-H', '--helo', default=None,                    help="The HELO (or EHLO) name to use")
+    group.add_argument('-p', '--port', type=int, default=25,            help="Use the given SMTP port instead of 25")
+    group.add_argument('-r', '--replacement', action='append',          help="domain replacement <old>,<new>, as in '@example.com,@example.org' to apply to recipient")
     group.add_argument('-v', '--version', action='store_true',          help="output version information, then exit")
     group.add_argument('-V', '--verbose', action='store_true',          help="be (slightly) more verbose")
-    group.add_argument('-r', '--replacement', action='append',          help="domain replacement <old>,<new>, as in '@example.com,@example.org' to apply to recipient")
 
     options = parser.parse_args(namespace=options)
 
@@ -167,7 +168,7 @@ def run():
     kwargs = {}
     if hasattr(options, 'helo') and options.helo:
         kwargs['local_hostname'] = options.helo
-    server = smtplib.SMTP('localhost', **kwargs)
+    server = smtplib.SMTP('localhost', options.port, **kwargs)
     server.set_debuglevel(1 if options.debug else 0)
 
     for file in options.EMAIL:
