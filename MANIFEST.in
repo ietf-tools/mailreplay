@@ -1,8 +1,0 @@
-include changelog
-include LICENSE
-include Makefile
-include README.rst
-include requirements.txt
-include mailreplay/debug.py
-include mailreplay/run.py
-include mailreplay/mailreplay.1.gz
